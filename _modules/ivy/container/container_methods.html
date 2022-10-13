@@ -10455,7 +10455,18 @@
 
 <span class="c1">#ivy.container.extensions</span>
 <span class="c1"># global</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">Literal</span><span class="p">,</span>
+    <span class="n">Iterable</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> <span class="n">Number</span>
 
 <span class="c1"># local</span>
 <span class="kn">import</span> <span class="nn">ivy</span>
@@ -10965,7 +10976,6 @@
 <span class="sd">    ivy.Container static method variant of ivy.kaiser_window. This method</span>
 <span class="sd">    simply wraps the function, and so the docstring for ivy.kaiser_window</span>
 <span class="sd">    also applies to this method with minimal changes.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    window_length</span>
@@ -10979,12 +10989,10 @@
 <span class="sd">        data type of the returned array.</span>
 <span class="sd">    out</span>
 <span class="sd">        optional output container, for writing the result to.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ret</span>
 <span class="sd">        The container that includes the Kaiser windows.</span>
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=3, b=5)</span>
@@ -11013,7 +11021,6 @@
 <span class="sd">    ivy.Container instance method variant of ivy.kaiser_window. This method</span>
 <span class="sd">    simply wraps the function, and so the docstring for ivy.kaiser_window</span>
 <span class="sd">    also applies to this method with minimal changes.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    self</span>
@@ -11027,12 +11034,10 @@
 <span class="sd">        data type of the returned array.</span>
 <span class="sd">    out</span>
 <span class="sd">        optional output container, for writing the result to.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ret</span>
 <span class="sd">        The container that includes the Kaiser windows.</span>
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=3, b=5)</span>
@@ -11061,7 +11066,6 @@
 <span class="sd">    ivy.Container static method variant of ivy.moveaxis. This method simply wraps</span>
 <span class="sd">    the function, and so the docstring for ivy.moveaxis also applies to this method</span>
 <span class="sd">    with minimal changes.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    a</span>
@@ -11073,19 +11077,15 @@
 <span class="sd">        These must also be unique.</span>
 <span class="sd">    out</span>
 <span class="sd">        optional output container, for writing the result to.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ret</span>
 <span class="sd">        Container including arrays with moved axes.</span>
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    With one :class:`ivy.Container` input:</span>
-
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.zeros((3, 4, 5)), b=ivy.zeros((2,7,6)))</span>
 <span class="sd">    &gt;&gt;&gt; ivy.Container.static_moveaxis(x, 0, -1).shape</span>
-
 <span class="sd">    {</span>
 <span class="sd">        a: (4, 5, 3)</span>
 <span class="sd">        b: (7, 6, 2)</span>
@@ -11105,7 +11105,6 @@
     <span class="sd">&quot;&quot;&quot;ivy.Container instance method variant of ivy.moveaxis. This method simply</span>
 <span class="sd">    wraps the function, and so the docstring for ivy.flatten also applies to this</span>
 <span class="sd">    method with minimal changes.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    self</span>
@@ -11117,23 +11116,101 @@
 <span class="sd">        These must also be unique.</span>
 <span class="sd">    out</span>
 <span class="sd">        optional output container, for writing the result to.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ret</span>
 <span class="sd">        Container including arrays with moved axes.</span>
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    With one :class:`ivy.Container` input:</span>
-
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.zeros((3, 4, 5)), b=ivy.zeros((2,7,6)))</span>
 <span class="sd">    &gt;&gt;&gt; x.moveaxis(, 0, -1).shape</span>
-
 <span class="sd">    {</span>
 <span class="sd">        a: (4, 5, 3)</span>
 <span class="sd">        b: (7, 6, 2)</span>
 <span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="static_pad"><a class="viewcode-back" href="../../../functional/ivy/extensions/pad/static_pad_container.html#ivy.container.container_methods.static_pad">[docs]</a><span class="k">def</span> <span class="nf">static_pad</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="n">pad_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="n">Union</span><span class="p">[</span>
+            <span class="n">Literal</span><span class="p">[</span>
+                <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;edge&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;linear_ramp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;reflect&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;symmetric&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;wrap&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">Callable</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+    <span class="n">stat_length</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">constant_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">end_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">reflect_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;even&quot;</span><span class="p">,</span> <span class="s2">&quot;odd&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;even&quot;</span><span class="p">,</span>
+    <span class="n">key_chains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">to_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">prune_unapplied</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">map_sequences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ivy.Container static method variant of ivy.pad. This method simply</span>
+<span class="sd">    wraps the function, and so the docstring for ivy.pad also applies to</span>
+<span class="sd">    this method with minimal changes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="pad"><a class="viewcode-back" href="../../../functional/ivy/extensions/pad/pad_container.html#ivy.container.container_methods.pad">[docs]</a><span class="k">def</span> <span class="nf">pad</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="n">pad_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="n">Union</span><span class="p">[</span>
+            <span class="n">Literal</span><span class="p">[</span>
+                <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;edge&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;linear_ramp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;reflect&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;symmetric&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;wrap&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">Callable</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+    <span class="n">stat_length</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">constant_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">end_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">reflect_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;even&quot;</span><span class="p">,</span> <span class="s2">&quot;odd&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;even&quot;</span><span class="p">,</span>
+    <span class="n">key_chains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">to_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">prune_unapplied</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">map_sequences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ivy.Container instance method variant of ivy.pad. This method simply</span>
+<span class="sd">    wraps the function, and so the docstring for ivy.pad also applies to</span>
+<span class="sd">    this method with minimal changes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
@@ -18531,8 +18608,6 @@
     <span class="n">Dict</span><span class="p">,</span>
     <span class="n">Iterable</span><span class="p">,</span>
     <span class="n">Sequence</span><span class="p">,</span>
-    <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">Literal</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> <span class="n">Number</span>
 
@@ -19435,88 +19510,6 @@
 <span class="sd">        b: (&lt;classivy.array.array.Array&gt;shape=[2,6])</span>
 <span class="sd">    }</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="static_pad"><a class="viewcode-back" href="../../../functional/ivy/manipulation/pad/static_pad_container.html#ivy.container.container_methods.static_pad">[docs]</a><span class="k">def</span> <span class="nf">static_pad</span><span class="p">(</span>
-    <span class="n">x</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span>
-    <span class="o">/</span><span class="p">,</span>
-    <span class="n">pad_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
-        <span class="n">Union</span><span class="p">[</span>
-            <span class="n">Literal</span><span class="p">[</span>
-                <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;edge&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;linear_ramp&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;median&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;reflect&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;symmetric&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;wrap&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
-            <span class="p">],</span>
-            <span class="n">Callable</span><span class="p">,</span>
-        <span class="p">]</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
-    <span class="n">stat_length</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">constant_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">end_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">reflect_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;even&quot;</span><span class="p">,</span> <span class="s2">&quot;odd&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;even&quot;</span><span class="p">,</span>
-    <span class="n">key_chains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">to_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">prune_unapplied</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">map_sequences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ivy.Container static method variant of ivy.pad. This method simply</span>
-<span class="sd">    wraps the function, and so the docstring for ivy.pad also applies to</span>
-<span class="sd">    this method with minimal changes.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="pad"><a class="viewcode-back" href="../../../functional/ivy/manipulation/pad/pad_container.html#ivy.container.container_methods.pad">[docs]</a><span class="k">def</span> <span class="nf">pad</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span>
-    <span class="o">/</span><span class="p">,</span>
-    <span class="n">pad_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
-        <span class="n">Union</span><span class="p">[</span>
-            <span class="n">Literal</span><span class="p">[</span>
-                <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;edge&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;linear_ramp&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;median&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;reflect&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;symmetric&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;wrap&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
-            <span class="p">],</span>
-            <span class="n">Callable</span><span class="p">,</span>
-        <span class="p">]</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span>
-    <span class="n">stat_length</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">constant_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">end_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Number</span><span class="p">]],</span> <span class="n">Number</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">reflect_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;even&quot;</span><span class="p">,</span> <span class="s2">&quot;odd&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;even&quot;</span><span class="p">,</span>
-    <span class="n">key_chains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">to_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">prune_unapplied</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">map_sequences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ivy.Container instance method variant of ivy.pad. This method simply</span>
-<span class="sd">    wraps the function, and so the docstring for ivy.pad also applies to</span>
-<span class="sd">    this method with minimal changes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
